@@ -170,17 +170,75 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--espacio-xl);
     margin-top: var(--espacio-lg);
-    max-width: 1000px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .proyecto-card {
-    background-color: transparent;
-    border-radius: 0;
-    overflow: hidden;
-    box-shadow: none;
-    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espacio-md);
+}
+
+.proyecto-card__imagen-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+}
+
+.proyecto-card__boton-repo {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    padding: 12px 32px;
+    border-radius: var(--radio-borde);
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.proyecto-card__boton-repo:hover {
+    background-color: var(--color-secundario);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Fondo y botón centrado */
+.proyecto-card__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(74, 123, 167, 0.6); /* color-secundario con transparencia */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.proyecto-card__imagen:hover .proyecto-card__overlay {
+    opacity: 1;
+}
+
+.proyecto-card__enlace {
+    background-color: var(--color-blanco);
+    color: var(--color-secundario);
+    padding: 10px 24px;
+    border-radius: var(--radio-borde);
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.proyecto-card__enlace:hover {
+    background-color: var(--color-acento);
+    color: var(--color-blanco);
 }
 
 body.dark-mode .proyecto-card {
@@ -192,19 +250,20 @@ body.dark-mode .proyecto-card {
 }
 
 .proyecto-card__imagen {
-    width: 100%;
-    height: auto;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 6px solid var(--color-secundario);
 }
 
 .proyecto-card__imagen img {
     width: 100%;
     height: auto;
     display: block;
-    border: 3px solid #333333;
+    transition: transform 0.3s ease;
+}
+
+.proyecto-card__imagen:hover img {
+    transform: scale(1.05);
 }
 
 body.dark-mode .proyecto-card__imagen img {
@@ -241,6 +300,8 @@ body.dark-mode .proyecto-card__imagen img {
     border-radius: 16px;
     font-size: 12px;
 }
+
+
 
 /* Footer */
 .footer {
